@@ -4,6 +4,16 @@ function SignUpForm() {
 
     return (
         <div>
+            {/* 
+                Name:
+                username:
+                email:
+                password:
+                confirm password:
+                <Link to='/availablehouses'>
+                    <button>signup</button>
+                </Link>
+            */}
         </div>
     )
 }
