@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import RubyVacationsLogo from '/home/banthony4/Development/code/projects/ruby-vacations-front-end/src/assets/RubyVacationsLogo.gif'
+import RubyVacationsLogo from '../assets/RubyVacationsLogo.gif'
 
 const linkStyles = {
     display: "inline-block",

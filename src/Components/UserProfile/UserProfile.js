@@ -1,5 +1,5 @@
 import React from 'react';
-import GenericAvatar from '/home/banthony4/Development/code/projects/ruby-vacations-front-end/src/assets/GenericAvatar.png';
+import GenericAvatar from '../assets/GenericAvatar.png'
 
 function UserProfile() {
 
