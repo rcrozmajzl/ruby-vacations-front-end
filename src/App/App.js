@@ -1,4 +1,5 @@
 import React from "react";
+// import { BrowserRouter as Router } from "react-router-dom";
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import NavBar from '../Components/NavBar/NavBar.js';
@@ -16,14 +17,27 @@ function App() {
   return (
     <div className="App">
       <h1>Welcome to Ruby Vactions!</h1>
-      <NavBar />
-      {/* <Switch>
-        <Route path="/availablehouses" element={<AvailableHouses/>} />
-        <Route path="/userprofile" element={<UserProfile/>} />
-        <Route path="/myvisits" element={<MyVisits/>} />
-        <Route path="/myreviews" element={<MyReviews/>} />
-        <Route path="/availablehouses/:id" element={<HouseProfile/>} />
-      </Switch> */}
+        <NavBar />
+        <Switch>
+          <Route exact path="/">
+              <LoginSignUpPage />
+          </Route>
+          <Route path="/availablehouses">
+              <AvailableHouses />
+          </Route>
+          <Route path="/userprofile">
+            <UserProfile/>
+          </Route>
+          <Route path="/myvisits">
+            <MyVisits/>
+          </Route>
+          <Route path="/myreviews">
+            <MyReviews/>
+          </Route>
+          <Route path="/availablehouses/:id">
+            <HouseProfile/>
+          </Route>
+        </Switch>
     </div>
   );
 }

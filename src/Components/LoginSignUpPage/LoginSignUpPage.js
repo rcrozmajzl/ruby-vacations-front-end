@@ -7,6 +7,7 @@ function LoginSignUpPage() {
 
     return (
         <div>
+            <h1>Login & Signup Form Page</h1>
             <div>
                 <LoginForm/>
             </div>
