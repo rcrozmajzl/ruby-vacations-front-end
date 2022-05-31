@@ -3,7 +3,7 @@ import LoginForm from '../LoginForm/LoginForm.js';
 import SignUpForm from '../SignUpForm/SignUpForm.js';
 
 
-function LoginSignUpPage() {
+function LoginSignUpPage({ setUser, setIsAuthenticated }) {
 
     return (
         <div>
@@ -12,7 +12,7 @@ function LoginSignUpPage() {
                 <LoginForm/>
             </div>
             <div>
-                <SignUpForm/>
+                <SignUpForm setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
             </div>
         </div>
     )
