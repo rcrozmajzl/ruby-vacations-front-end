@@ -1,5 +1,4 @@
-import React from "react";
-// import { BrowserRouter as Router } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import NavBar from '../Components/NavBar/NavBar.js';
@@ -7,23 +6,56 @@ import AvailableHouses from '../Components/AvailableHouses/AvailableHouses.js';
 import UserProfile from '../Components/UserProfile/UserProfile.js';
 import MyReviews from '../Components/MyReviews/MyReviews.js';
 import MyVisits from '../Components/MyVisits/MyVisits.js';
-import LoginForm from '../Components/LoginForm/LoginForm.js';
-import SignUpForm from '../Components/SignUpForm/SignUpForm.js';
 import LoginSignUpPage from '../Components/LoginSignUpPage/LoginSignUpPage.js';
 import HouseProfile from '../Components/HouseProfile/HouseProfile.js';
 
 
 function App() {
+  const [houses, setHouses] = useState([])
+  const [selectedState, setSelectedState] = useState('All')
+
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+
+    useEffect(() => {
+      fetch('/authorized_user')
+      .then(r => {
+        if(r.ok){
+          r.json()
+          .then(user => {
+            setIsAuthenticated(true)
+            setUser(user)
+          })
+        }
+      })
+    })
+
+  useEffect(() => {
+      fetch('/houses')
+      .then(r => r.json())
+      .then(data => setHouses(data))
+  },[])
+
+  const filterHouses = () => {
+      let filteredHouses = [...houses]
+      if(selectedState === "All"){
+          filteredHouses = [...houses]
+      } else {
+          filteredHouses = [...houses].filter(h => h.location.toLowerCase().includes(selectedState.toLowerCase()))
+      }
+      return filteredHouses
+  }
+
   return (
     <div className="App">
       <h1>Welcome to Ruby Vactions!</h1>
         <NavBar />
         <Switch>
           <Route exact path="/">
-              <LoginSignUpPage />
+              <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
           </Route>
-          <Route path="/availablehouses">
-              <AvailableHouses />
+          <Route exact path="/availablehouses">
+              <AvailableHouses houses={filterHouses()} selectedState={selectedState} setSelectedState={setSelectedState} />
           </Route>
           <Route path="/userprofile">
             <UserProfile/>
