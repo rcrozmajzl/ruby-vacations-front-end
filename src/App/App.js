@@ -1,4 +1,5 @@
 import React from "react";
+import {useState, useEffect} from 'react';
 // import { BrowserRouter as Router } from "react-router-dom";
 import { Route, Switch } from 'react-router-dom';
 import './App.css';
@@ -14,6 +15,18 @@ import HouseProfile from '../Components/HouseProfile/HouseProfile.js';
 
 
 function App() {
+
+  const [reviews, setReviews] = useState([]);
+
+  useEffect(() => {
+    fetch("http://localhost:3000/reviews")
+      .then((res) => res.json())
+      .then((data) => {
+        setReviews(data);
+      });
+  },[]);
+
+
   return (
     <div className="App">
       <h1>Welcome to Ruby Vactions!</h1>
@@ -32,7 +45,7 @@ function App() {
             <MyVisits/>
           </Route>
           <Route path="/myreviews">
-            <MyReviews/>
+            <MyReviews reviews={reviews} setReviews={setReviews}/>
           </Route>
           <Route path="/availablehouses/:id">
             <HouseProfile/>
