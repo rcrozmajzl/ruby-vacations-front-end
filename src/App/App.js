@@ -11,12 +11,21 @@ import HouseProfile from '../Components/HouseProfile/HouseProfile.js';
 
 
 function App() {
+  const [reviews, setReviews] = useState([]);
   const [houses, setHouses] = useState([])
   const [selectedState, setSelectedState] = useState('All')
 
   const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [user, setUser] = useState(null);
 
+  useEffect(() => {
+    fetch("/reviews")
+      .then((res) => res.json())
+      .then((data) => {
+        setReviews(data);
+      });
+  }, []);
+  
   useEffect(() => {
     fetch('/authorized_user')
     .then(r => {
@@ -28,7 +37,7 @@ function App() {
         })
       }
     })
-  }, [])
+  }, []);
 
   useEffect(() => {
       fetch('/houses')
@@ -36,6 +45,7 @@ function App() {
       .then(data => setHouses(data))
   },[])
 
+  
   const filterHouses = () => {
       let filteredHouses = [...houses]
       if(selectedState === "All"){
@@ -67,7 +77,7 @@ function App() {
             {isAuthenticated ? <MyVisits user={user}/> : <Redirect to="/"/>}
           </Route>
           <Route path="/myreviews">
-            {isAuthenticated? <MyReviews user={user}/> : <Redirect to="/"/>}
+            {isAuthenticated? <MyReviews reviews={reviews} setReviews={setReviews}/> : <Redirect to="/"/>}
           </Route>
           <Route path="/availablehouses/:id">
             {isAuthenticated ? <HouseProfile/> : <Redirect to="/"/>}
