@@ -10,7 +10,6 @@ function SignUpForm({setUser, setIsAuthenticated}) {
     email: '',
     password: '',
   })
-  console.log('signupData: ', signupData);
 
   const handleChange = (e) => {
     const {name, value} = e.target

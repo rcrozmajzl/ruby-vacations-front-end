@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
-import './App.css';
+
 import NavBar from '../Components/NavBar/NavBar.js';
 import AvailableHouses from '../Components/AvailableHouses/AvailableHouses.js';
 import UserProfile from '../Components/UserProfile/UserProfile.js';
@@ -8,6 +8,8 @@ import MyReviews from '../Components/MyReviews/MyReviews.js';
 import MyVisits from '../Components/MyVisits/MyVisits.js';
 import LoginSignUpPage from '../Components/LoginSignUpPage/LoginSignUpPage.js';
 import HouseProfile from '../Components/HouseProfile/HouseProfile.js';
+
+import './App.css';
 
 
 function App() {
@@ -44,6 +46,8 @@ function App() {
       .then(r => r.json())
       .then(data => setHouses(data))
   },[])
+  console.log(houses)
+  console.log(user)
 
   
   const filterHouses = () => {
@@ -85,7 +89,6 @@ function App() {
         </Switch>
       </div>
     </Router>
-    
   );
 }
 
