@@ -3,7 +3,7 @@ import HouseCard from '../HouseCard/HouseCard.js';
 
 function AvailableHouses({ houses, selectedState, setSelectedState }) {
 
-    // const renderHouses = houses.map(house => <HouseCard house={house} key={house.id} />)
+    const renderHouses = houses.map(house => <HouseCard house={house} key={house.id} />)
     
     console.log("available houses component")
 
@@ -26,7 +26,7 @@ function AvailableHouses({ houses, selectedState, setSelectedState }) {
                 <option value='Washington'>Washington</option>
             </select>
             </label>
-            {/* {renderHouses} */}
+            {renderHouses}
         </div>
     )
 }

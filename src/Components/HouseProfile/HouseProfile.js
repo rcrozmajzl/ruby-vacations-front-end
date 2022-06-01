@@ -47,7 +47,7 @@ function HouseProfile() {
                     value={value}
                     yearAriaLabel="Year"
                 />
-            <Link to={`/userprofile`}>
+            <Link to={`/myvisits`}>
                 <button>Book Now!</button>
             </Link>
             </div>

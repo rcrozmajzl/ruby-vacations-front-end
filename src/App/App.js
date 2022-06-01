@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 
 import NavBar from '../Components/NavBar/NavBar.js';
 import AvailableHouses from '../Components/AvailableHouses/AvailableHouses.js';
@@ -11,16 +11,13 @@ import HouseProfile from '../Components/HouseProfile/HouseProfile.js';
 
 import './App.css';
 
-
 function App() {
   const [reviews, setReviews] = useState([]);
   const [houses, setHouses] = useState([])
   const [selectedState, setSelectedState] = useState('All')
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  console.log('isAuthenticated: ', isAuthenticated);
   const [user, setUser] = useState(null);
-  console.log('user: ', user);
 
   useEffect(() => {
     fetch('/reviews')
@@ -60,7 +57,6 @@ function App() {
   if(!isAuthenticated) return <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
 
   return (
-    <Router>
       <div className="App">
         <h1>Welcome to Ruby Vactions!</h1>
         <NavBar setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
@@ -68,7 +64,7 @@ function App() {
           {/* <Route exact path="/">
               <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
           </Route> */}
-          <Route path="/availablehouses">
+          <Route exact path="/availablehouses">
               <AvailableHouses houses={filterHouses()} selectedState={selectedState} setSelectedState={setSelectedState}/>
           </Route>
           <Route path="/userprofile">
@@ -85,7 +81,6 @@ function App() {
           </Route>
         </Switch>
       </div>
-    </Router>
   );
 }
 
