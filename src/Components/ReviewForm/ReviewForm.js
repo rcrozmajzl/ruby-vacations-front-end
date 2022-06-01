@@ -21,17 +21,19 @@ function ReviewForm({
   // handleSubmit,
   reviews,
   setReviews,
+  house_id,
+  user_id
 }) {
   const [starInput, setStarInput] = useState("");
   const [reviewInput, setReviewInput] = useState("");
-
   const newReview = {
     review_details: starInput,
     star_rating: reviewInput,
-    house_id: 1,
-    user_id: 1,
+    house_id: house_id,
+    user_id: user_id,
   };
-
+  console.log('newReview: ', newReview);
+  
   const configObjPOST = {
     method: "POST",
     headers: {
@@ -43,7 +45,7 @@ function ReviewForm({
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    fetch(`http://localhost:3000/reviews`, configObjPOST)
+    fetch(`/reviews`, configObjPOST)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
