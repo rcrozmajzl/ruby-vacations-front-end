@@ -39,7 +39,7 @@ function App() {
         })
       }
     })
-  });
+  }, []);
 
   useEffect(() => {
     fetch('/houses')
@@ -61,7 +61,7 @@ function App() {
     <Router>
       <div className="App">
         <h1>Welcome to Ruby Vactions!</h1>
-        <NavBar />
+        <NavBar setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
         <Switch>
           <Route exact path="/">
               <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />

@@ -1,13 +1,18 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import RubyVacationsLogo from '../assets/RubyVacationsLogo.gif';
 import './NavBar.css';
 
-function NavBar({ onLogout }) {
+function NavBar({ setUser, setIsAuthenticated }) {
+    const history = useHistory()
     function handleLogout(){
         fetch('/logout', {
             method: 'DELETE',
-        }).then(() => onLogout());
+        }).then(() => {
+            setIsAuthenticated(false)
+            setUser(null)
+            history.push('/')
+        });
     }
 
     return (
