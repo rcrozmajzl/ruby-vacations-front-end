@@ -1,63 +1,29 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-import RubyVacationsLogo from '../assets/RubyVacationsLogo.gif'
+import { Link } from 'react-router-dom';
+import RubyVacationsLogo from '../assets/RubyVacationsLogo.gif';
+import './NavBar.css';
 
-const linkStyles = {
-    display: "inline-block",
-    width: "50px",
-    padding: "12px",
-    margin: "0 6px 6px",
-    background: "blue",
-    textDecoration: "none",
-    color: "white",
-};
+function NavBar({ onLogout }) {
+    function handleLogout(){
+        fetch('/logout', {
+            method: 'DELETE',
+        }).then(() => onLogout());
+    }
 
-function NavBar() {
     return (
         <div className='nav'>
             <img src={RubyVacationsLogo} className="Nav-logo" alt="logo" />
-            {/* <NavLink
-                to="/userprofile"
-                exact
-                style={linkStyles}
-                activeStyle={{
-                    background: "darkblue",
-                }}
-            >
-                My Profile
-            </NavLink>
-            <NavLink
-                to="/myvisits"
-                exact
-                style={linkStyles}
-                activeStyle={{
-                    background: "darkblue",
-                }}
-            >
-                My Visits
-            </NavLink>
-            <NavLink
-                to="/myreviews"
-                exact
-                style={linkStyles}
-                activeStyle={{
-                    background: "darkblue",
-                }}
-            >
-                My Reviews
-            </NavLink>
-            <NavLink
-                to="/availablehouses"
-                exact
-                style={linkStyles}
-                activeStyle={{
-                    background: "darkblue",
-                }}
-            >
-                Available Houses
-            </NavLink> */}
+            <div>
+                <h1><Link to="/userprofile" className='nav-links'>My Profile</Link></h1>
+                <h1><Link to="/myvisits" className='nav-links'>My Visits</Link></h1>
+                <h1><Link to="/myreviews" className='nav-links'>My Reviews</Link></h1>
+                <h1><Link to="/availablehouses" className='nav-links'>Available Houses</Link></h1>
+            </div>
+            <div>
+                <button onClick={handleLogout}>Log Out</button>
+            </div>
         </div>
     )
 }
-
+ 
 export default NavBar;
