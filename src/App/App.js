@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 
 import NavBar from '../Components/NavBar/NavBar.js';
 import AvailableHouses from '../Components/AvailableHouses/AvailableHouses.js';
@@ -39,28 +39,23 @@ function App() {
         })
       }
     })
-  }, []);
+  });
 
   useEffect(() => {
-      fetch('/houses')
-      .then(r => r.json())
-      .then(data => setHouses(data))
-  },[])
-  console.log(houses)
-  console.log(user)
+    fetch('/houses')
+    .then(r => r.json())
+    .then(data => setHouses(data))
+    },[])
 
-  
   const filterHouses = () => {
-      let filteredHouses = [...houses]
       if(selectedState === "All"){
-          filteredHouses = [...houses]
+          return houses
       } else {
-          filteredHouses = [...houses].filter(h => h.location.toLowerCase().includes(selectedState.toLowerCase()))
+          return houses.filter(h => h.location.toLowerCase().includes(selectedState.toLowerCase()))
       }
-      return filteredHouses
   }
 
-  if(!user) return <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
+  if(!isAuthenticated) return <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
 
   return (
     <Router>
@@ -69,22 +64,22 @@ function App() {
         <NavBar />
         <Switch>
           <Route exact path="/">
-              {isAuthenticated ? <Redirect to="/availablehouses"/> : <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />}
+              <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
           </Route>
           <Route exact path="/availablehouses">
-              {isAuthenticated ? <AvailableHouses houses={filterHouses} selectedState={selectedState} setSelectedState={setSelectedState}/> : <Redirect to="/"/>}
+              <AvailableHouses houses={filterHouses()} selectedState={selectedState} setSelectedState={setSelectedState}/>
           </Route>
           <Route path="/userprofile">
-            {isAuthenticated ? <UserProfile user={user}/> : <Redirect to="/"/>}
+            <UserProfile user={user}/>
           </Route>
           <Route path="/myvisits">
-            {isAuthenticated ? <MyVisits user={user}/> : <Redirect to="/"/>}
+            <MyVisits user={user}/>
           </Route>
           <Route path="/myreviews">
-            {isAuthenticated? <MyReviews reviews={reviews} setReviews={setReviews}/> : <Redirect to="/"/>}
+            <MyReviews reviews={reviews} setReviews={setReviews}/> 
           </Route>
           <Route path="/availablehouses/:id">
-            {isAuthenticated ? <HouseProfile/> : <Redirect to="/"/>}
+            <HouseProfile/>
           </Route>
         </Switch>
       </div>

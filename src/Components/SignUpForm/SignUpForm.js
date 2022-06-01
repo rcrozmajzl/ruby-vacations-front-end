@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './SignUpForm.css';
 
 function SignUpForm({setUser, setIsAuthenticated}) {
+  const history = useHistory()
   const [confirmPassword, setConfirmPassword] = useState('')
   const [errors, setErrors] = useState([])
   const [signupData, setSignupData] = useState({
@@ -37,6 +39,7 @@ function SignUpForm({setUser, setIsAuthenticated}) {
         .then(user => {
           setUser(user)
           setIsAuthenticated(true)
+          history.push('/availablehouses')
         })
       } else{
         r.json()
@@ -49,24 +52,24 @@ function SignUpForm({setUser, setIsAuthenticated}) {
     <div className='signup-form-box'>
       <h2>New Users Sign Up Here!</h2>
       <form onSubmit={handleSubmit}>
-        <label>Name
+        <label>Name:
           <input type='text' name='name' onChange={handleChange} value={signupData.name}></input>
         </label>
-        <label>Username
+        <label>Username:
           <input type='text' name='username' onChange={handleChange} value={signupData.username}></input>
         </label>
-        <label>Email
+        <label>Email:
           <input type='text' name='email' onChange={handleChange} value={signupData.email}></input>
         </label>
-        <label>Password
+        <label>Password:
           <input type='password' name='password' onChange={handleChange} value={signupData.password}></input>
         </label>
-        <label>Confirm Password
+        <label>Confirm Password:
           <input type='password' onChange={e => setConfirmPassword(e.target.value)}></input>
         </label>
-        <button>Sign up</button>
+        <input type="submit" className='login-button' value='Signup'/>
       </form>
-      {errors ? errors.map(e => <div>{e}</div> ) : null}
+      {errors ? errors.map(e => <p>{e}</p> ) : null}
     </div>
   )
 }

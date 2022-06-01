@@ -3,7 +3,8 @@ import { useHistory } from 'react-router-dom';
 import './LoginForm.css';
 
 function LoginForm({setUser, setIsAuthenticated}) {
-  const [errors, setErrors] = useState([])
+  const history = useHistory()
+  const [error, setError] = useState([])
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -16,15 +17,13 @@ function LoginForm({setUser, setIsAuthenticated}) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    setErrors([])
-    if(!loginData)
-
+    setError([])
     fetch('/login',{
       method:'POST',
       headers:{
         'Content-Type': 'application/json',
       },
-      body:JSON.stringify({loginData}),
+      body:JSON.stringify(loginData),
     })
     .then(r => {
       if(r.ok){
@@ -32,29 +31,28 @@ function LoginForm({setUser, setIsAuthenticated}) {
         .then(user => {
           setUser(user)
           setIsAuthenticated(true)
-          useHistory.push('/availablehouses')
+          history.push('/availablehouses')
         })
       } else{
         r.json()
-        .then(json => setErrors(Object.entries(json.error).flat()))
+        .then(json => setError(json.error))
       }
     })
   }
-
 
     return(
         <div className='login-form-box'>
             <h2>Returning Users Log In Here!</h2>
             <form onSubmit={handleSubmit}>
-                <label>Username
+                <label>Username:
                 <input type='text' name='username' onChange={handleChange} value={loginData.username}></input>
                 </label>
-                <label>Password
+                <label>Password:
                 <input type='password' name='password' onChange={handleChange} value={loginData.password}></input>
                 </label>
-                <button type="submit" className='login-button'>Login</button>
+                <input type="submit" className='login-button' value='Login'/>
             </form>
-            {/* {errors ? errors.map(e => <div>{e}</div> ) : null} */}
+            {error ? <p>{error}</p> : null }
         </div>
     )
 }
