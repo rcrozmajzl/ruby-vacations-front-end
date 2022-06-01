@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+ 
+.login-signup-page {
+    text-align: center;
+    font-family: 'Oswald', sans-serif;
+    background-image: url("/src/Components/assets/road-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100vh;
+}
+ 
+.login-header {
+    font-family: 'Oswald', sans-serif;
+    color: rgb(122, 6, 6);
+}
+ 
+h2 {
+    font-family: 'Oswald', sans-serif;
+    color: rgb(122, 6, 6);
+}
+ 
+.forms-div {
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+}
