@@ -15,11 +15,11 @@ function App() {
   const [houses, setHouses] = useState([])
   const [selectedState, setSelectedState] = useState('All')
 
-  const [isAuthenticated, setIsAuthenticated] = useState(true);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-    fetch("/reviews")
+    fetch('/reviews')
       .then((res) => res.json())
       .then((data) => {
         setReviews(data);

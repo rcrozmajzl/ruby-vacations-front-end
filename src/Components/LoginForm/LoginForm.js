@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './LoginForm.css';
 
 function LoginForm({setUser, setIsAuthenticated}) {
@@ -31,6 +32,7 @@ function LoginForm({setUser, setIsAuthenticated}) {
         .then(user => {
           setUser(user)
           setIsAuthenticated(true)
+          useHistory.push('/availablehouses')
         })
       } else{
         r.json()
@@ -50,7 +52,7 @@ function LoginForm({setUser, setIsAuthenticated}) {
                 <label>Password
                 <input type='password' name='password' onChange={handleChange} value={loginData.password}></input>
                 </label>
-                <input type="submit" value="Login!" className='login-button'/>
+                <button type="submit" className='login-button'>Login</button>
             </form>
             {/* {errors ? errors.map(e => <div>{e}</div> ) : null} */}
         </div>
