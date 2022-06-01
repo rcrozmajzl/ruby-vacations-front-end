@@ -2,33 +2,28 @@ import React, { useState } from 'react';
 import './LoginForm.css';
 
 function LoginForm({setUser, setIsAuthenticated}) {
-    const [confirmPassword, setConfirmPassword] = useState('')
   const [errors, setErrors] = useState([])
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
   })
-  console.log('loginData: ', loginData);
 
   const handleChange = (e) => {
     const {name, value} = e.target
     setLoginData(loginData => ({...loginData, [name]: value}) )
   }
 
-  const handleSubmit = (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
     setErrors([])
-    if(confirmPassword !== loginData.password){
-      alert("Passwords dont' match!")
-    }
+    if(!loginData)
 
-    fetch('/users',{
+    fetch('/login',{
       method:'POST',
       headers:{
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
       },
-      body:JSON.stringify(loginData)
+      body:JSON.stringify({loginData}),
     })
     .then(r => {
       if(r.ok){
@@ -39,7 +34,7 @@ function LoginForm({setUser, setIsAuthenticated}) {
         })
       } else{
         r.json()
-        .then(json => setErrors(json.errors))
+        .then(json => setErrors(Object.entries(json.error).flat()))
       }
     })
   }
@@ -57,7 +52,7 @@ function LoginForm({setUser, setIsAuthenticated}) {
                 </label>
                 <input type="submit" value="Login!" className='login-button'/>
             </form>
-            {errors ? errors.map(e => <div>{e}</div> ) : null}
+            {/* {errors ? errors.map(e => <div>{e}</div> ) : null} */}
         </div>
     )
 }

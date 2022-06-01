@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import './App.css';
 import NavBar from '../Components/NavBar/NavBar.js';
 import AvailableHouses from '../Components/AvailableHouses/AvailableHouses.js';
@@ -14,21 +14,21 @@ function App() {
   const [houses, setHouses] = useState([])
   const [selectedState, setSelectedState] = useState('All')
 
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(true);
   const [user, setUser] = useState(null);
 
-    useEffect(() => {
-      fetch('/authorized_user')
-      .then(r => {
-        if(r.ok){
-          r.json()
-          .then(user => {
-            setIsAuthenticated(true)
-            setUser(user)
-          })
-        }
-      })
+  useEffect(() => {
+    fetch('/authorized_user')
+    .then(r => {
+      if(r.ok){
+        r.json()
+        .then(user => {
+          setIsAuthenticated(true)
+          setUser(user)
+        })
+      }
     })
+  }, [])
 
   useEffect(() => {
       fetch('/houses')
@@ -46,31 +46,36 @@ function App() {
       return filteredHouses
   }
 
+  if(!user) return <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
+
   return (
-    <div className="App">
-      <h1>Welcome to Ruby Vactions!</h1>
+    <Router>
+      <div className="App">
+        <h1>Welcome to Ruby Vactions!</h1>
         <NavBar />
         <Switch>
           <Route exact path="/">
-              <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
+              {isAuthenticated ? <Redirect to="/availablehouses"/> : <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />}
           </Route>
           <Route exact path="/availablehouses">
-              <AvailableHouses houses={filterHouses()} selectedState={selectedState} setSelectedState={setSelectedState} />
+              {isAuthenticated ? <AvailableHouses houses={filterHouses} selectedState={selectedState} setSelectedState={setSelectedState}/> : <Redirect to="/"/>}
           </Route>
           <Route path="/userprofile">
-            <UserProfile/>
+            {isAuthenticated ? <UserProfile user={user}/> : <Redirect to="/"/>}
           </Route>
           <Route path="/myvisits">
-            <MyVisits/>
+            {isAuthenticated ? <MyVisits user={user}/> : <Redirect to="/"/>}
           </Route>
           <Route path="/myreviews">
-            <MyReviews/>
+            {isAuthenticated? <MyReviews user={user}/> : <Redirect to="/"/>}
           </Route>
           <Route path="/availablehouses/:id">
-            <HouseProfile/>
+            {isAuthenticated ? <HouseProfile/> : <Redirect to="/"/>}
           </Route>
         </Switch>
-    </div>
+      </div>
+    </Router>
+    
   );
 }
 

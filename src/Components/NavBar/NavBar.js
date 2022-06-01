@@ -3,7 +3,12 @@ import { Link } from 'react-router-dom';
 import RubyVacationsLogo from '../assets/RubyVacationsLogo.gif';
 import './NavBar.css';
 
-function NavBar() {
+function NavBar({ onLogout }) {
+    function handleLogout(){
+        fetch('/logout', {
+            method: 'DELETE',
+        }).then(() => onLogout());
+    }
 
     return (
         <div className='nav'>
@@ -14,7 +19,9 @@ function NavBar() {
                 <h1><Link to="/myreviews" className='nav-links'>My Reviews</Link></h1>
                 <h1><Link to="/availablehouses" className='nav-links'>Available Houses</Link></h1>
             </div>
-            {/* <button onClick={() => handleLogOut}>Log Out</button> */}
+            <div>
+                <button onClick={handleLogout}>Log Out</button>
+            </div>
         </div>
     )
 }
