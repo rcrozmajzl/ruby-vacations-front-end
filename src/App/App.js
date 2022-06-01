@@ -18,7 +18,9 @@ function App() {
   const [selectedState, setSelectedState] = useState('All')
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  console.log('isAuthenticated: ', isAuthenticated);
   const [user, setUser] = useState(null);
+  console.log('user: ', user);
 
   useEffect(() => {
     fetch('/reviews')
@@ -63,10 +65,10 @@ function App() {
         <h1>Welcome to Ruby Vactions!</h1>
         <NavBar setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
         <Switch>
-          <Route exact path="/">
+          {/* <Route exact path="/">
               <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
-          </Route>
-          <Route exact path="/availablehouses">
+          </Route> */}
+          <Route path="/availablehouses">
               <AvailableHouses houses={filterHouses()} selectedState={selectedState} setSelectedState={setSelectedState}/>
           </Route>
           <Route path="/userprofile">

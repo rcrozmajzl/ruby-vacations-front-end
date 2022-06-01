@@ -31,8 +31,7 @@ function LoginForm({setUser, setIsAuthenticated}) {
         .then(user => {
           setUser(user)
           setIsAuthenticated(true)
-          history.push('/availablehouses')
-        })
+        }).then(() => history.push('/availablehouses'))
       } else{
         r.json()
         .then(json => setError(json.error))
