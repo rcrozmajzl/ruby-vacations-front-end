@@ -1,12 +1,10 @@
 import React from 'react';
 import HouseCard from '../HouseCard/HouseCard.js';
 
-function AvailableHouses({ houses, selectedState, setSelectedState }) {
+function AvailableHouses({ filterHouses, selectedState, setSelectedState }) {
 
-    const renderHouses = houses.map(house => <HouseCard house={house} key={house.id} />)
+    const renderHouses = filterHouses.map(house => <HouseCard house={house} key={house.id} />)
     
-    console.log("available houses component")
-
     return (
         <div>
             <h2>Available Houses</h2>

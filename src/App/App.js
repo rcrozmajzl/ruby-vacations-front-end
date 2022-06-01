@@ -61,17 +61,14 @@ function App() {
         <h1>Welcome to Ruby Vactions!</h1>
         <NavBar setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
         <Switch>
-          {/* <Route exact path="/">
-              <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
-          </Route> */}
           <Route exact path="/availablehouses">
-              <AvailableHouses houses={filterHouses()} selectedState={selectedState} setSelectedState={setSelectedState}/>
+              <AvailableHouses filterHouses={filterHouses()} selectedState={selectedState} setSelectedState={setSelectedState}/>
           </Route>
           <Route path="/userprofile">
             <UserProfile user={user}/>
           </Route>
           <Route path="/myvisits">
-            <MyVisits user={user}/>
+            <MyVisits user={user} houses={houses} />
           </Route>
           <Route path="/myreviews">
             <MyReviews reviews={reviews} setReviews={setReviews}/> 
