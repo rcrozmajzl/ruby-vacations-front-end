@@ -2,10 +2,8 @@ import React from 'react';
 import ReviewForm from '../ReviewForm/ReviewForm';
 
 function VisitCard({ visit, houses }) {
-    console.log('houses: ', houses);
     const {start_date, end_date, house_id, user_id} = visit
     const houseVisit = houses.filter(house => house.id === house_id)
-    console.log('houseVisit: ', houseVisit);
 
     return (
         <div>
