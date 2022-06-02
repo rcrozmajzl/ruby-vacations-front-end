@@ -43,11 +43,11 @@ function LoginForm({setUser, setIsAuthenticated}) {
         <div className='login-form-box'>
             <h2>Returning Users Log In Here!</h2>
             <form onSubmit={handleSubmit}>
-                <label>Username:
-                <input type='text' name='username' onChange={handleChange} value={loginData.username}></input>
+                <label className="Login-page-labels">Username:
+                <input className="loginInputs" type='text' name='username' onChange={handleChange} value={loginData.username}></input>
                 </label>
-                <label>Password:
-                <input type='password' name='password' onChange={handleChange} value={loginData.password}></input>
+                <label className="Login-page-labels">Password:
+                <input className="loginInputs"  type='password' name='password' onChange={handleChange} value={loginData.password}></input>
                 </label>
                 <input type="submit" className='login-button' value='Login'/>
             </form>

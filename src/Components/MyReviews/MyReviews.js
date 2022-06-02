@@ -200,13 +200,12 @@ function MyReviews({ reviews, setReviews }) {
   //   fetch(`http://localhost:9292`)
   // }
   return (
-    <div>
+    <div style={{fontFamily: 'Georgia, serif', marginBottom: '10px'}}>
       About
       <div className="reviews-container">
         <div className='about1'>
-          Founded by best friends Elijah Smith, Daniel Conroy, and Elizabeth Treahy,
         </div>
-        <div className='about2'>
+        <div style={{fontFamily: 'Georgia, serif'}} className='about2'>
           Sinatra's is everything you've been looking for.
         </div>
       </div>
@@ -220,9 +219,6 @@ function MyReviews({ reviews, setReviews }) {
       // handleSubmit={handleSubmit}
       />
       <div className="reviews-container">
-        {/* <div class="column"></div>
-        <div class="column"></div>
-        <div class="column"></div> */}
         <div className="reviewText">
         <h2>Reviews</h2>
         </div>
