@@ -1,0 +1,10 @@
+.house-card{
+  border: 2px solid red;
+  border-radius: 10%;
+  width: 30rem;
+}
+
+.house-card img{
+  width: 20rem;
+  height: 10rem;
+}

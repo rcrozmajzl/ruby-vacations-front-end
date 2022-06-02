@@ -69,7 +69,7 @@ function SignUpForm({setUser, setIsAuthenticated}) {
         </label>
         <input type="submit" className='login-button' value='Sign up'/>
       </form>
-      {errors ? errors.map(e => <p>{e}</p> ) : null}
+      {errors ? errors.map(e => <p className='errors'>{e}</p> ) : null}
     </div>
   )
 }

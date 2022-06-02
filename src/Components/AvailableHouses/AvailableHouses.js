@@ -1,12 +1,13 @@
 import React from 'react';
 import HouseCard from '../HouseCard/HouseCard.js';
+import './AvailableHouses.css'
 
 function AvailableHouses({ filterHouses, selectedState, setSelectedState }) {
 
     const renderHouses = filterHouses.map(house => <HouseCard house={house} key={house.id} />)
     
     return (
-        <div>
+        <div className='available-houses'>
             <h2>Available Houses</h2>
             <label>
             Select State:
@@ -24,7 +25,7 @@ function AvailableHouses({ filterHouses, selectedState, setSelectedState }) {
                 <option value='Washington'>Washington</option>
             </select>
             </label>
-            <div className='available-houses'>
+            <div>
                 {renderHouses}
             </div>
         </div>

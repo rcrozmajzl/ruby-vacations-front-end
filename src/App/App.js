@@ -18,7 +18,12 @@ function App() {
 
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
-
+  
+  useEffect(() => {
+    fetch('/houses')
+    .then(r => r.json())
+    .then(data => setHouses(data))
+    },[])
   useEffect(() => {
     fetch('/reviews')
       .then((res) => res.json())
@@ -40,11 +45,6 @@ function App() {
     })
   }, []);
 
-  useEffect(() => {
-    fetch('/houses')
-    .then(r => r.json())
-    .then(data => setHouses(data))
-    },[])
 
   const filterHouses = () => {
       if(selectedState === "All"){
