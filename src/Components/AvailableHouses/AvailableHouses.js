@@ -1,5 +1,6 @@
 import React from 'react';
 import HouseCard from '../HouseCard/HouseCard.js';
+import './AvailableHouses.css'
 
 function AvailableHouses({ filterHouses, selectedState, setSelectedState }) {
 
@@ -8,7 +9,7 @@ function AvailableHouses({ filterHouses, selectedState, setSelectedState }) {
     return (
         <div>
             <h2>Available Houses</h2>
-            <label>
+            <label className="SelectState">
             Select State:
             <select name='state' onChange={(e) =>{ setSelectedState(e.target.value) }} value={selectedState} >
             <option value='All'>All</option>

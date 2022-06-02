@@ -14,6 +14,7 @@
 import React, { useState } from "react";
 import Paper from '@mui/material/Paper'
 import Rating from '@mui/material/Rating'
+import './ReviewCard.css'
 
 function ReviewCard({
   review,

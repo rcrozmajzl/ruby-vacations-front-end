@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import VisitCard from '../VisitCard/VisitCard.js'
+import './MyVisits.css'
 
 function MyVisits({ user, houses }) {
     const [visits, setVisits] = useState([])
@@ -13,7 +14,7 @@ function MyVisits({ user, houses }) {
     const renderVisits = visits.map(visit => <VisitCard visit={visit} key={visit.id} houses={houses} user={user} />)
 
     return(
-        <div>
+        <div className='VisitCard'>
             {renderVisits}
         </div>
     )

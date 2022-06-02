@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import { useParams, Link } from 'react-router-dom'
 import DateRangePicker from '@wojtekmaj/react-daterange-picker'
+import './HouseProfile.css'
 
 function HouseProfile({ user }) {
     const [house, setHouse] = useState({})

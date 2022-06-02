@@ -12,6 +12,7 @@
 // export default ReviewForm;
 
 import React, { useState } from "react";
+import './ReviewForm.css'
 
 function ReviewForm({
   // starInput,
@@ -62,20 +63,20 @@ function ReviewForm({
       <div className='reviewText'> Leave a review! </div>
     
       <input
-        className='inputReview'
+        className='inputReview1'
         type="integer"
         value={starInput}
         placeholder="Star Rating"
         onChange={(e) => setStarInput(e.target.value)}
-        style={{borderTopRightRadius: '10px', borderBottomLeftRadius: '10px', width: '49%',}}
+        style={{borderTopRightRadius: '10px', borderBottomLeftRadius: '10px', width: '49%', }}
       />
       <textarea
-        className='inputReview'
+        className='inputReview2'
         type="textarea"
         value={reviewInput}
         placeholder="Review..."
         onChange={(e) => setReviewInput(e.target.value)}
-        style={{textAlign: 'center', width: '49%', marginLeft: '25.5%'}}
+        style={{textAlign: 'center', width: '49%'}}
       />
       <button style={{width: '10%', backgroundColor:'black', color:'white', cursor:'pointer',transform: 'skew(-10deg)'}} onClick={handleSubmit}>Submit</button>
     </form>

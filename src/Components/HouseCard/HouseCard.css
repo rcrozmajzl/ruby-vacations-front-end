@@ -1,0 +1,20 @@
+.houseImage{
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.houseButton {
+    display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 25%;
+  margin-bottom: 20px;
+  text-decoration: none;
+
+}
+
+.houseCard {
+    border: 1px solid black;
+}

@@ -58,7 +58,7 @@ function App() {
 
   return (
       <div className="App">
-        <h1>Welcome to Ruby Vactions!</h1>
+        <h1></h1>
         <NavBar setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
         <Switch>
           <Route exact path="/availablehouses">

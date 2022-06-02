@@ -1,20 +1,21 @@
-*{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 
-}
 
-.inputReview{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
 
-}
 
-.inputStarReview {
+/* .inputStarReview {
     border-top-right-radius: 10px;
     border-bottom-left-radius: 10px;
     font-size: 20px;
+    margin-right: 25.5%
+} */
+
+
+.inputReview {
+    margin-left: 25.5%;
+
 }
 
+.inputReview2 {
+    margin-left: 25.5%;
+
+}

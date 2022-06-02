@@ -114,6 +114,7 @@ import React, { useState } from "react";
 import ReviewForm from "../ReviewForm/ReviewForm";
 import ReviewCard from "../ReviewCard/ReviewCard";
 import Grid from "@mui/material/Grid";
+import './MyReviews.css'
 
 
 function MyReviews({ reviews, setReviews }) {
@@ -200,7 +201,7 @@ function MyReviews({ reviews, setReviews }) {
   //   fetch(`http://localhost:9292`)
   // }
   return (
-    <div style={{fontFamily: 'Georgia, serif', marginBottom: '10px'}}>
+    <div className='about3' style={{fontFamily: 'Georgia, serif', marginBottom: '10px'}}>
       About
       <div className="reviews-container">
         <div className='about1'>

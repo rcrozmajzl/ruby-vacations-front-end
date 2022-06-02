@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import './HouseCard.css'
 
 
 function HouseCard({ house }) {
@@ -7,13 +8,13 @@ function HouseCard({ house }) {
 
     return (
         <div className='house-card'>
-            <img src={image} alt={name}></img>
-            <h3>{location}</h3>
-            <p>{description}</p>
-            <p>${per_night}/per night</p>
-            <p>Stars: {avg_rating} </p>
+            <img className="houseImage" src={image} alt={name}></img>
+            <h3 className="houseImage">{location}</h3>
+            <p className="houseImage">{description}</p>
+            <p className="houseImage">${per_night}/per night</p>
+            <p className="houseImage">Stars: {avg_rating} </p>
             <Link to={`/availablehouses/${id}`}>
-                <button>Show Details</button>
+                <button className="houseButton">Show Details</button>
             </Link>
         </div>
     )
