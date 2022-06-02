@@ -74,7 +74,7 @@ function App() {
             <MyReviews reviews={reviews} setReviews={setReviews}/> 
           </Route>
           <Route path="/availablehouses/:id">
-            <HouseProfile/>
+            <HouseProfile user={user}/>
           </Route>
         </Switch>
       </div>

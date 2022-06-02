@@ -24,7 +24,9 @@ function AvailableHouses({ filterHouses, selectedState, setSelectedState }) {
                 <option value='Washington'>Washington</option>
             </select>
             </label>
-            {renderHouses}
+            <div className='available-houses'>
+                {renderHouses}
+            </div>
         </div>
     )
 }

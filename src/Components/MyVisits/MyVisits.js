@@ -3,7 +3,6 @@ import VisitCard from '../VisitCard/VisitCard.js'
 
 function MyVisits({ user, houses }) {
     const [visits, setVisits] = useState([])
-    console.log('visits: ', visits);
 
     useEffect(() => {
         fetch('/visits')
