@@ -1,11 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
+
  
- 
-.App {
+.app {
   text-align: center;
-  font-family: 'Oswald', sans-serif;
+  font-family:Arial, Helvetica, sans-serif;
   background-image: url("../Components/assets/van-background.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
 }
+
+.appHeader 
+  {
+    text-transform: uppercase;
+  }
+
+
+  
+

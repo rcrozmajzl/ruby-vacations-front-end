@@ -24,8 +24,8 @@ function NavBar({ setUser, setIsAuthenticated }) {
                 <h1><Link to="/myreviews" className='nav-links'>My Reviews</Link></h1>
                 <h1><Link to="/availablehouses" className='nav-links'>Available Houses</Link></h1>
             </div>
-            <div>
-                <button onClick={handleLogout}>Log Out</button>
+            <div className="navLogoutDiv">
+                <button  className="navLogout"  onClick={handleLogout}>Log Out</button>
             </div>
         </div>
     )

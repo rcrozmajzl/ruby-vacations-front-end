@@ -40,8 +40,8 @@ return (
       <h3>{review_details}</h3>
       {/* <h3>{star_rating}</h3> */}
       <Rating value={star_rating} readOnly />
-      <button onClick={() => setDisplayEdit(!displayEdit)}>edit</button>
-      <button onClick={() => deleteReview(review)}>delete</button>
+      <button className="btnEdit" onClick={() => setDisplayEdit(!displayEdit)}>edit</button>
+      <button className="btnDelete" onClick={() => deleteReview(review)}>delete</button>
       {displayEdit ? (
         <form
           className="review-edit-form"
