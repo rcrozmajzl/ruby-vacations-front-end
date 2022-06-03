@@ -4,8 +4,17 @@
     font-family: 'Sofia', sans-serif;
 }
 
+h1 {
+    font-family: 'Bad Script', cursive;
+    color: #e85a4f;
+    opacity: 90%;
+}
+.visit-title {
+    font-size: 20px;
+}
+
 h2 {
-    color: #31525b;
+    color: #31525B;
     font-weight: 500;
 }
 
@@ -13,8 +22,9 @@ h2 {
     display: flex;
     flex-wrap: wrap;
     list-style: none;
-    padding: 0;
+    padding: 10px;
 }
+
 .visit-outer-div .visit-card {
     position: relative;
     width: 300px;
@@ -44,10 +54,10 @@ h2 {
     background: rgba(10, 72, 112, 0);
     transition: 0.3s;
 }
-.visit-outer-div .visit-card .visit-form-div {
+.visit-outer-div .visit-card .review-form-div {
     height: 200px;
 }
-.visit-outer-div .visit-card .visit-form-div .visit-content {
+.visit-outer-div .visit-card .review-form-div .visit-content {
     position: relative;
     opacity: 0;
     display: flex;
@@ -58,22 +68,7 @@ h2 {
     transform: translateY(-200px);
     transition: 0.3s;
 }
-/* .visit-outer-div .visit-card .visit-form-div .content .btn {
-    border: 3px solid white;
-    padding: 10px 15px;
-    background: none;
-    text-transform: uppercase;
-    font-weight: bold;
-    font-size: 1.3em;
-    color: white;
-    cursor: pointer;
-    transition: 0.3s;
-} */
-/* .visit-outer-div .visit-card .visit-form-div .content .btn:hover {
-    background: white;
-    border: 0px solid white;
-    color: #31525b;
-} */
+
 .visit-outer-div .visit-card .visit-information-container {
     flex: 1 0 auto;
     padding: 20px;
@@ -104,10 +99,10 @@ h2 {
     opacity: 0;
     transition: 0.3s;
 }
-.visit-outer-div .visit-card .visit-information-container .more-information .from-and-to-container {
+.visit-outer-div .visit-card .visit-information-container .more-information .dates-container {
     display: flex;
 }
-.visit-outer-div .visit-card .visit-information-container .visit-more-information .from-and-to-container .box {
+.visit-outer-div .visit-card .visit-information-container .visit-more-information .dates-container .box {
     flex: 1 0;
     padding: 15px;
     margin-top: 20px;
@@ -118,19 +113,16 @@ h2 {
     font-weight: bold;
     font-size: 0.9em;
 }
-.visit-outer-div .visit-card .visit-information-container .visit-more-information .from-and-to-container .box.from {
-    color: #ffa101;
-    margin-right: 10px;
-}
-/* .visit-outer-div .visit-card .visit-information-container .visit-more-information .description {
+
+.visit-outer-div .visit-card .visit-information-container .visit-more-information .dates-container {
     margin-top: 20px;
     font-size: 0.8em;
     color: #7d7d7d;
-} */
+}
 .visit-outer-div .visit-card:hover::before {
     background: rgba(10, 72, 112, 0.6);
 }
-.visit-outer-div .visit-card:hover .visit-form-div .visit-content {
+.visit-outer-div .visit-card:hover .visit-form-div .test-container {
     opacity: 1;
     transform: translateY(0px);
 }
@@ -144,7 +136,7 @@ h2 {
     .visit-outer-div .visit-card::before {
         background: rgba(10, 72, 112, 0.6);
 }
-.visit-outer-div .visit-card .visit-form-div .visit-content {
+.visit-outer-div .visit-card .visit-form-div .test-container {
         opacity: 1;
         transform: translateY(0px);
 }
