@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React from 'react';
 import HouseCard from '../HouseCard/HouseCard.js';
 import './AvailableHouses.css';
 
-function AvailableHouses({houses}) {
-    const [selectedState, setSelectedState] = useState('All')
+function AvailableHouses({houses, setSelectedState, selectedState}) {
+    // const [selectedState, setSelectedState] = useState('All')
     
-    const filterHouses = () => {
-        if(selectedState === "All"){
-            return houses
-        } else {
-            return houses.filter(h => h.location.toLowerCase().includes(selectedState.toLowerCase()))
-        }
-    }
+    // const filterHouses = () => {
+    //     if(selectedState === "All"){
+    //         return houses
+    //     } else {
+    //         return houses.filter(h => h.location.toLowerCase().includes(selectedState.toLowerCase()))
+    //     }
+    // }
 
-    const test = filterHouses()
+    // const test = filterHouses()
 
-    const renderHouses = test.map(house => <HouseCard house={house} key={house.id} />)
+    const renderHouses = houses.map(house => <HouseCard house={house} key={house.id} />)
     
     return (
         <div>

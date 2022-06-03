@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Route, Switch, Redirect } from 'react-router-dom';
-
 import NavBar from '../Components/NavBar/NavBar.js';
 import AvailableHouses from '../Components/AvailableHouses/AvailableHouses.js';
 import UserProfile from '../Components/UserProfile/UserProfile.js';
@@ -8,7 +7,6 @@ import MyReviews from '../Components/MyReviews/MyReviews.js';
 import MyVisits from '../Components/MyVisits/MyVisits.js';
 import LoginSignUpPage from '../Components/LoginSignUpPage/LoginSignUpPage.js';
 import HouseProfile from '../Components/HouseProfile/HouseProfile.js';
-
 import './App.css';
 
 function App() {
@@ -16,7 +14,8 @@ function App() {
   const [user, setUser] = useState(null);
   const [houses, setHouses] = useState([])
   const [reviews, setReviews] = useState([])
-  
+  const [selectedState, setSelectedState] = useState('All')
+
   useEffect(() => {
     fetch('/authorized_user')
     .then(r => {
@@ -37,24 +36,21 @@ function App() {
     .then(r => r.json())
     .then(data => setHouses(data))
     }
-  
   const unlockReviews = () => {
     fetch(`/reviews/by_user/${user.id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data))
-
-
-  const filterHouses = () => {
-      if(selectedState === "All"){
-          return houses
-      } else {
-          return houses.filter(h => h.location.toLowerCase().includes(selectedState.toLowerCase()))
-      }
-
   }
 
-  if(!isAuthenticated) return <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
+  const filterHouses = () => {
+    if(selectedState === "All"){
+        return houses
+    } else {
+        return houses.filter(h => h.location.toLowerCase().includes(selectedState.toLowerCase()))
+    }
+}
 
+  if(!isAuthenticated) return <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
   return (
       <div className="app">
         <Switch>
@@ -63,9 +59,9 @@ function App() {
           </Route>
           <div>
             <NavBar setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
-            <div className="body"> 
+            <div className="body">
               <Route exact path="/availablehouses">
-                  {isAuthenticated ? <AvailableHouses houses={houses}/> : <Redirect to="/"/>}
+                  {isAuthenticated ? <AvailableHouses houses={filterHouses()} setSelectedState={setSelectedState} selectedState={selectedState} /> : <Redirect to="/"/>}
               </Route>
               <Route path="/userprofile">
                 {isAuthenticated ? <UserProfile user={user}/> : <Redirect to="/"/>}
@@ -85,5 +81,4 @@ function App() {
       </div>
   );
 }
-
 export default App;

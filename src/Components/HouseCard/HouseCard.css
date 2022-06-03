@@ -1,26 +1,21 @@
-
 /* body {
     background-color:#f2f2f2;
     font-family: 'RobotoDraft', 'Roboto', sans-serif;
     -webkit-font-smoothing: antialiased;
 }
-
 *
 {
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
-
 h3 {
     margin:0px;
     font-size:1.4em;
     font-weight:700;
 }
-
 p {
     font-size:12px;
 }
-
 .outer-div {
     height:100vh;
     width:100%;
@@ -28,7 +23,6 @@ p {
     justify-content: center;
     align-items: center;
 }
-
 .house-card {
     height:18em;
     width:14em;
@@ -45,10 +39,9 @@ p {
     transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
     border-radius:16px;
     overflow:hidden;
-    -webkit-box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
-    box-shadow:  15px 15px 27px #e1e1e3, -15px -15px 27px #ffffff;
+    -webkit-box-shadow:  15px 15px 27px #E1E1E3, -15px -15px 27px #FFFFFF;
+    box-shadow:  15px 15px 27px #E1E1E3, -15px -15px 27px #FFFFFF;
 }
-
 .image-div {
     height:6em;
     width:14em;
@@ -62,7 +55,6 @@ p {
     background-size:cover;
     background-repeat:no-repeat;
 }
-
 .info-div {
     background-color: #FAFAFC;
     height:12em;
@@ -75,7 +67,6 @@ p {
     padding: 0.5em 1em;
     text-align:center;
 }
-
 .link-div {
     width:1em;
     height:1em;
@@ -87,39 +78,32 @@ p {
     -o-transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
     transition:all 0.4s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-
 .house-card:hover .info-div {
     height:0em;
     padding:0px 1em;
 }
-
 .house-card:hover .image-div
 {
     height:18em;
 }
-
 .house-card:hover .link-div
 {
     background-color:white;
 }
-
 .house-card:hover .link-div:hover
 {
     background-color:blue;
     cursor:pointer;
 } */
-
 * {
     margin: 0;
     padding: 0;
     font-family: 'Sofia', sans-serif;
 }
-
 h2 {
-    color: #31525b;
+    color: #31525B;
     font-weight: 500;
 }
-
 .outer-div {
     display: flex;
     flex-wrap: wrap;
@@ -141,7 +125,7 @@ h2 {
     background-position: center center;
     background-size: cover;
     text-align: center;
-    color: #31525b;
+    color: #31525B;
     transition: 0.3s;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
@@ -183,12 +167,12 @@ h2 {
 .outer-div .house-card .button-div .content .btn:hover {
     background: white;
     border: 0px solid white;
-    color: #31525b;
+    color: #31525B;
 }
 .outer-div .house-card .information-container {
     flex: 1 0 auto;
     padding: 20px;
-    background: #f0f0f0;
+    background: #F0F0F0;
     transform: translateY(206px);
     transition: 0.3s;
 }
@@ -208,7 +192,7 @@ h2 {
     height: 3px;
     width: 50px;
     margin: auto;
-    background: #31525b;
+    background: #31525B;
 }
 .outer-div .house-card .information-container .subtitle {
     display: flex;
@@ -216,7 +200,6 @@ h2 {
     justify-content: center;
     margin-top: 10px;
 }
-
 .outer-div .house-card .information-container .more-information {
     opacity: 0;
     transition: 0.3s;
@@ -236,13 +219,13 @@ h2 {
     font-size: 0.9em;
 }
 .outer-div .house-card .information-container .more-information .ratings-and-price-container .box.ratings {
-    color: #ffa101;
+    color: #FFA101;
     margin-right: 10px;
 }
 .outer-div .house-card .information-container .more-information .description {
     margin-top: 20px;
     font-size: 0.8em;
-    color: #7d7d7d;
+    color: #7D7D7D;
 }
 .outer-div .house-card:hover::before {
     background: rgba(10, 72, 112, 0.6);
@@ -270,4 +253,5 @@ h2 {
 }
 .outer-div .house-card .information-container .more-information {
         opacity: 1;
+}
 }
