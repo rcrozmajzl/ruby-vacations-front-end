@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './SignUpForm.css';
+import GenericAvatar from '../assets/GenericAvatar.png';
 
 function SignUpForm({setUser, setIsAuthenticated}) {
   const history = useHistory()
@@ -11,6 +12,7 @@ function SignUpForm({setUser, setIsAuthenticated}) {
     username: '',
     email: '',
     password: '',
+    avatar: GenericAvatar,
   })
 
   const handleChange = (e) => {
@@ -50,7 +52,7 @@ function SignUpForm({setUser, setIsAuthenticated}) {
 
   return (
     <div className='signup-form-box'>
-      <h2>New Users Sign Up Here!</h2>
+      <h1 className='signup-title'>New Users Sign Up Here!</h1>
       <form onSubmit={handleSubmit}>
         <label>Name:
           <input className="signupInputs" type='text' name='name' onChange={handleChange} value={signupData.name}></input>
@@ -67,7 +69,7 @@ function SignUpForm({setUser, setIsAuthenticated}) {
         <label>Confirm Password:
           <input className="signupInputs" type='password' onChange={e => setConfirmPassword(e.target.value)}></input>
         </label>
-        <input type="submit" className='login-button' value='Sign up'/>
+        <input type="submit" className='signup-button' value='Sign up'/>
       </form>
       {errors ? errors.map(e => <p>{e}</p> ) : null}
     </div>

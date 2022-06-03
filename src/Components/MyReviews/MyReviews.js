@@ -111,16 +111,18 @@
 // }
 // export default MyReviews;
 import React, { useState } from "react";
-import ReviewForm from "../ReviewForm/ReviewForm";
+// import ReviewForm from "../ReviewForm/ReviewForm";
 import ReviewCard from "../ReviewCard/ReviewCard";
 import Grid from "@mui/material/Grid";
+import './MyReviews.css';
 
 
-function MyReviews({ reviews, setReviews }) {
+function MyReviews({ user, reviews, setReviews, houses }) {
   const [starInput, setStarInput] = useState("");
   const [reviewInput, setReviewInput] = useState("");
   const [reviewEditInput, setReviewEditInput] = useState("");
   const [starEditInput, setStarEditInput] = useState("");
+
 
   const configObjDELETE = { method: "DELETE" };
 
@@ -165,7 +167,10 @@ function MyReviews({ reviews, setReviews }) {
       });
   };
 
-  const renderReviews = reviews.map((review) => {
+  const currentUserReviews = reviews.filter(review => review.user_id === user.id)
+  
+  const renderReviews = currentUserReviews.map((review) => {
+    console.log("test")
     return (
       <ReviewCard
         key={review.id}
@@ -201,34 +206,26 @@ function MyReviews({ reviews, setReviews }) {
   // }
   return (
     <div style={{fontFamily: 'Georgia, serif', marginBottom: '10px'}}>
-      About
-      <div className="reviews-container">
-        <div className='about1'>
+      <div className='reviews-header-div'>
+          <h1>MY REVIEWS</h1>
         </div>
-        <div style={{fontFamily: 'Georgia, serif'}} className='about2'>
-          Sinatra's is everything you've been looking for.
-        </div>
-      </div>
-      <ReviewForm
-        starInput={starInput}
-        setStarInput={setStarInput}
-        reviewInput={reviewInput}
-        setReviewInput={setReviewInput}
-        reviews={reviews}
-        setReviews={setReviews}
-      // handleSubmit={handleSubmit}
-      />
-      <div className="reviews-container">
-        <div className="reviewText">
-        <h2>Reviews</h2>
-        </div>
-        <Grid container style={{ justifyContent: "space-evenly" }}>
+        <div className="reviews-container">
+          {/* <ReviewForm
+          starInput={starInput}
+          setStarInput={setStarInput}
+          reviewInput={reviewInput}
+          setReviewInput={setReviewInput}
+          reviews={reviews}
+          setReviews={setReviews}
+          // handleSubmit={handleSubmit}
+          /> */}
+          <Grid container style={{ justifyContent: "space-evenly" }}>
           {/* <Paper variant="outlined" elevation={12} > */}
             {renderReviews}
           {/* </Paper> */}
-        </Grid>
+          </Grid>
+        </div>
       </div>
-    </div>
   );
 }
 

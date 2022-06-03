@@ -1,13 +1,24 @@
 import React from 'react';
-import GenericAvatar from '../assets/GenericAvatar.png'
+import './UserProfile.css';
 
-function UserProfile() {
+function UserProfile({user}) {
+
+    const { avatar, name, username, email } = user
 
     return (
-        <div>
-            <img src={GenericAvatar} className="Avatar" alt="avatar" />
-            <h1>First Name Last Name</h1>
-            <p>A little background information on myself</p>
+        <div className="outer-div">
+            <div className="profile-card">
+                <div className="profile-content">
+                    <div>
+                        <img src={avatar} className='profile-picture' alt="avatar" />
+                    </div>
+                    <div className=''>
+                        <h1 className='profile-name'>{name}</h1>
+                        <h1 className='profile-username'>{username}</h1>
+                        <h1 className='profile-email'>{email}</h1>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

@@ -41,7 +41,7 @@ function LoginForm({setUser, setIsAuthenticated}) {
 
     return(
         <div className='login-form-box'>
-            <h2>Returning Users Log In Here!</h2>
+            <h1 className='login-title'>Returning Users Log In Here!</h1>
             <form onSubmit={handleSubmit}>
                 <label className="Login-page-labels">Username:
                 <input className="loginInputs" type='text' name='username' onChange={handleChange} value={loginData.username}></input>
