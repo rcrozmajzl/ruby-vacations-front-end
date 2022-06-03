@@ -2,7 +2,6 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import './HouseCard.css';
 
-
 function HouseCard({ house }) {
     const {id, image, name, location, description, avg_rating, per_night} = house
 

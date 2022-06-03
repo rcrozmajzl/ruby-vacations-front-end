@@ -5,6 +5,7 @@ import './LoginForm.css';
 function LoginForm({setUser, setIsAuthenticated}) {
   const history = useHistory()
   const [error, setError] = useState([])
+  console.log('error: ', error);
   const [loginData, setLoginData] = useState({
     username: '',
     password: '',
@@ -22,6 +23,7 @@ function LoginForm({setUser, setIsAuthenticated}) {
       method:'POST',
       headers:{
         'Content-Type': 'application/json',
+        'Accept': 'application/json'
       },
       body:JSON.stringify(loginData),
     })
@@ -51,7 +53,7 @@ function LoginForm({setUser, setIsAuthenticated}) {
                 </label>
                 <input type="submit" className='login-button' value='Login'/>
             </form>
-            {error ? <p>{error}</p> : null }
+            {error ? <p className='error'>{error}</p> : null }
         </div>
     )
 }

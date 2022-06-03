@@ -42,6 +42,15 @@ function App() {
     fetch(`/reviews/by_user/${user.id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data))
+
+
+  const filterHouses = () => {
+      if(selectedState === "All"){
+          return houses
+      } else {
+          return houses.filter(h => h.location.toLowerCase().includes(selectedState.toLowerCase()))
+      }
+
   }
 
   if(!isAuthenticated) return <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
