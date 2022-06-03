@@ -6,12 +6,29 @@ function VisitCard({ visit, houses }) {
     const houseVisit = houses.filter(house => house.id === house_id)
 
     return (
-        <div>
-            <img src={houseVisit[0].image} alt={houseVisit[0].id}></img>
-            <h1>{houseVisit[0].location}</h1>
-            <h3>From: {start_date}</h3>
-            <h3>To: {end_date}</h3>
-            <ReviewForm house_id={houseVisit[0].id} user_id={user_id} />
+        <div className='visit-outer-div'>
+            <div className='visit-card' style={{backgroundImage: `url(${houseVisit[0].image}})`}}>
+                <div className='visit-form-div'>
+                    <div className='visit-content'>
+                        <ReviewForm house_id={houseVisit[0].id} user_id={user_id} />
+                    </div>
+                </div>
+                <div className='visit-information-container'>
+                    <div className='visit-info-div'>
+                        <h2 className='visit-title'>{houseVisit[0].location}</h2>
+                        <div className='visit-more-information'>
+                            <div className='from-and-to-container'>
+                                <div className='box from'>
+                                    <p className='from'>From: {start_date}</p>
+                                </div>
+                                <div className='box to'>
+                                    <p className='to'>To: {end_date}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     )
 }

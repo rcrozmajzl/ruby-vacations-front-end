@@ -35,8 +35,7 @@ function ReviewCard({
 
 
 return (
-    <div className="review-item">
-      {/* <Paper> */}
+    <div className="review-card-outer-div">
       <h3>{review_details}</h3>
       {/* <h3>{star_rating}</h3> */}
       <Rating value={star_rating} readOnly />
