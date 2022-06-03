@@ -37,7 +37,7 @@ function App() {
     .then(data => setHouses(data))
     }
   const unlockReviews = () => {
-    fetch(`/reviews/by_user/${user.id}`)
+    fetch(`http://localhost:3000/reviews/${user.id}`)
       .then((res) => res.json())
       .then((data) => setReviews(data))
   }
@@ -49,6 +49,7 @@ function App() {
         return houses.filter(h => h.location.toLowerCase().includes(selectedState.toLowerCase()))
     }
 }
+  console.log(reviews)
 
   if(!isAuthenticated) return <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
   return (

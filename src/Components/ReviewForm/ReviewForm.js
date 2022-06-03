@@ -27,8 +27,8 @@ function ReviewForm({
   const [starInput, setStarInput] = useState("");
   const [reviewInput, setReviewInput] = useState("");
   const newReview = {
-    review_details: starInput,
-    star_rating: reviewInput,
+    content: reviewInput,
+    rating: parseInt(starInput), 
     house_id: house_id,
     user_id: user_id,
   };
@@ -55,7 +55,7 @@ function ReviewForm({
       });
   };
 
-  //console.log(starInput, reviewInput);
+  console.log(starInput);
 
   return (
     <form onSubmit={(e) => handleSubmit(e)}>
