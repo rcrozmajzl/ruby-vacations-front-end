@@ -1,12 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import { useParams, Link } from 'react-router-dom'
+import Rating from '@mui/material/Rating'
 import DateRangePicker from '@wojtekmaj/react-daterange-picker'
+import './HouseProfile.css'
 
 function HouseProfile({ user }) {
     const [house, setHouse] = useState({})
     const { id } = useParams()
     const [value, onChange] = useState([new Date(), new Date()]);
     const {image, name, location, description, avg_rating, reviews} = house
+    console.log('name: ', name);
     
     useEffect(() => {
         fetch(`/houses/${id}`)
@@ -114,40 +117,46 @@ function HouseProfile({ user }) {
     }
 
     return(
-        <div>
-            <h1>{name}</h1>
-            <div className='picAndStars'>
-                <img src={image} alt={name}></img>
-                <p>Rating: {avg_rating} </p>
+        <div className='profile'>
+            <h1 className='name'>{name}</h1>
+            <br></br> 
+            <br></br> 
+            <div className='information'>
+                <div className='pic-and-Stars'>
+                    <img className="img" src={image} alt={name}></img>
+                    <p>{ avg_rating ? <Rating value={avg_rating} readOnly /> : null }</p>
+                </div>
+                <div className='details'>
+                    <h1>{location}</h1>
+                    <p>{description}</p>
+                </div>
             </div>
-            <div className='details'>
-                <h1>{location}</h1>
-                <p>{description}</p>
-            </div>
-            <div className='Reviews'>
-                    <h1>Reviews</h1>
-                    {reviews ? reviews.slice(-3).map(rev => {
-                        return(
-                            <h3>Stars: {rev.rating} {rev.content}</h3>
-                        ) 
-                    }) : null }
-            </div> 
-            <div className='bookVisit'>
-                <h1>Book Visit</h1>
-                <DateRangePicker
-                    calendarAriaLabel="Toggle calendar"
-                    clearAriaLabel="Clear value"
-                    dayAriaLabel="Day"
-                    monthAriaLabel="Month"
-                    nativeInputAriaLabel="Date"
-                    onChange={onChange}
-                    value={value}
-                    yearAriaLabel="Year"
-                    format='y-MM-dd'
-                />
-            <Link to={`/myvisits`}>
-                <button onClick={handleBooking}>Book Now!</button>
-            </Link>
+            <div className='booking'>
+                <div className='Reviews'>
+                        <h1> Recent Reviews</h1>
+                        {reviews ? reviews.slice(-3).map(rev => {
+                            return(
+                                <h3><span className='stars'>{avg_rating ? <Rating value={avg_rating} readOnly /> : null}</span> {rev.content}</h3>
+                            ) 
+                        }) : null }
+                </div> 
+                <div className='book-visit'>
+                    <h1>Book Visit</h1>
+                    <DateRangePicker
+                        calendarAriaLabel="Toggle calendar"
+                        clearAriaLabel="Clear value"
+                        dayAriaLabel="Day"
+                        monthAriaLabel="Month"
+                        nativeInputAriaLabel="Date"
+                        onChange={onChange}
+                        value={value}
+                        yearAriaLabel="Year"
+                        format='y-MM-dd'
+                    />
+                <Link to={`/myvisits`}>
+                    <button onClick={handleBooking}>Book Now!</button>
+                </Link>
+                </div>
             </div>
         </div>
     )

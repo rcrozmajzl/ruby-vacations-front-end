@@ -49,7 +49,6 @@ function App() {
         return houses.filter(h => h.location.toLowerCase().includes(selectedState.toLowerCase()))
     }
 }
-  console.log(reviews)
 
   if(!isAuthenticated) return <LoginSignUpPage setUser={setUser} setIsAuthenticated={setIsAuthenticated} />
   return (

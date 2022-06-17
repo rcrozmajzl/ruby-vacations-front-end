@@ -1,5 +1,6 @@
 import React from 'react';
 import ReviewForm from '../ReviewForm/ReviewForm';
+import './VisitCard.css'
 
 function VisitCard({ visit, houses }) {
     const {start_date, end_date, house_id, user_id} = visit

@@ -1,24 +1,6 @@
-// import React from 'react';
-
-// function ReviewForm() {
-
-//     return(
-//         <div>
-
-//         </div>
-//     )
-// }
-
-// export default ReviewForm;
-
 import React, { useState } from "react";
 
 function ReviewForm({
-  // starInput,
-  // setStarInput,
-  // reviewInput,
-  // setReviewInput,
-  // handleSubmit,
   reviews,
   setReviews,
   house_id,
@@ -32,7 +14,6 @@ function ReviewForm({
     house_id: house_id,
     user_id: user_id,
   };
-  console.log('newReview: ', newReview);
   
   const configObjPOST = {
     method: "POST",
@@ -48,10 +29,9 @@ function ReviewForm({
     fetch(`/reviews`, configObjPOST)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        setStarInput(" ");
+        setReviewInput(" ");
         setReviews([...reviews, data]);
-        setStarInput("");
-        setReviewInput("");
       });
   };
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import Rating from '@mui/material/Rating'
 import './HouseCard.css';
 
 function HouseCard({ house }) {
@@ -22,7 +23,7 @@ function HouseCard({ house }) {
                         <div className='more-information'>
                             <div className='ratings-and-price-container'>
                                 <div className='box ratings'>
-                                    <p className='stars'>Stars: {avg_rating} </p>
+                                    <p className='stars'>Stars: {avg_rating ? <Rating value={avg_rating} readOnly /> : null} </p>
                                 </div>
                                 <div className='box price'>
                                     <p>${per_night}/per night</p>
